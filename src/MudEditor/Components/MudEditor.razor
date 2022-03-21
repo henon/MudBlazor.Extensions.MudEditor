@@ -1,0 +1,23 @@
+﻿@namespace MudBlazor.Extensions
+@inherits MudComponentBase
+
+<div class="@Classname">
+    <MudPaper Elevation="@Elevation" Height="@Height" MaxHeight="@MaxHeight" MaxWidth="@MaxWidth" MinHeight="@MinHeight" MinWidth="@MinWidth" Outlined="@Outlined" Square="@Square" Style="@Style" Tag="@Tag" UserAttributes="@UserAttributes" Width="@Width">
+        <CascadingValue Value="this">
+            <CascadingValue Value="ToolbarConfig">
+                <CascadingValue Value="MenuElevation">
+                    <CascadingValue Value="MenuOutlined">
+                        <CascadingValue Value="Fonts">
+                            <MudEditorToolbar></MudEditorToolbar>
+                        </CascadingValue>
+                    </CascadingValue>
+                </CascadingValue>
+            </CascadingValue>
+        </CascadingValue>
+
+        <div id="@EditorContainerId" @ref="@_quillElement" class="overflow-y-scroll d-flex mud-editor-container">
+            @EditorContent
+        </div>
+
+    </MudPaper>
+</div>

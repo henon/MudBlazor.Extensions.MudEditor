@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+		<RootNamespace>MudBlazor.Extensions</RootNamespace>
+	</PropertyGroup>
+
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="npm install" WorkingDirectory="$(ProjectDir)" />
+		<Exec Command="npm run build" WorkingDirectory="$(ProjectDir)" />
+	</Target>
+
+	<ItemGroup>
+		<Content Remove="TScript\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="MudBlazor" Version="6.0.7" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="CustomIcons\" />
+	</ItemGroup>
+</Project>

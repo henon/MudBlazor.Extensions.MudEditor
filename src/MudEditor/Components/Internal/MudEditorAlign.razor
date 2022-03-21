@@ -1,0 +1,34 @@
+﻿@namespace MudBlazor.Extensions.Internal
+@if (Expanded)
+{
+    <MudButtonGroup Variant="Variant.Outlined">
+        @foreach (var (align, icon) in _aligns)
+        {
+            <MudIconButton Class="pa-0" Icon="@icon" Color="@(_align == align ? Color.Primary : Color.Default)" Size="Size.Small" Title="bold" OnClick="@(() => SetAlign(align))"></MudIconButton>
+        }
+    </MudButtonGroup>
+}
+else
+{
+    <MudMenu Dense="true" Icon="@_aligns[_align]" Variant="Variant.Outlined" PopoverClass="pa-0" ListClass="py-0">
+        <MudButtonGroup Variant="Variant.Outlined" VerticalAlign="true">
+            @foreach (var (align, icon) in _aligns)
+            {
+                <MudIconButton Class="pa-0" Icon="@icon" Color="@(_align == align ? Color.Primary : Color.Default)" Size="Size.Small" Title="bold" OnClick="@(() => SetAlign(align))"></MudIconButton>
+            }
+        </MudButtonGroup>
+    </MudMenu>
+}
+
+
+@code {
+    [Parameter]
+    public bool Expanded { get; set; }
+
+    private readonly Dictionary<string, string> _aligns = new() { { "left", Icons.Filled.FormatAlignLeft }, { "center", Icons.Filled.FormatAlignCenter }, { "right", Icons.Filled.FormatAlignRight }, { "justify", Icons.Filled.FormatAlignJustify } };
+
+    private string _align = "left";
+
+    private void SetAlign(string align) => _align = align;
+
+}

@@ -1,0 +1,47 @@
+﻿@namespace MudBlazor.Extensions.Internal
+@switch (Settings.Type) {
+    case MudEditorValueType.Expanded:
+        <MudButtonGroup Variant="Variant.Outlined">
+            @foreach (var eventSetting in Settings.Events!)
+            {
+                <MudIconButton Class="pa-0" Color="@(_selectedSettings.Type == eventSetting.Type || Active ? ActiveColor : DefaultColor)" Icon="@eventSetting.Icon" OnClick="@(() => SelectSetting(eventSetting))" Size="Size.Small" Title="@eventSetting.Label"></MudIconButton>
+            }
+        </MudButtonGroup>
+        break;
+    case MudEditorValueType.Menu:
+        <MudMenu Dense="true" Icon="@_selectedSettings.Icon" Color="@(Active ? ActiveColor : DefaultColor)" ListClass="py-0" PopoverClass="pa-0" Variant="Variant.Outlined">
+            <MudButtonGroup Variant="Variant.Outlined" VerticalAlign="true">
+                @foreach (var eventSetting in Settings.Events!)
+                {
+                    <MudIconButton Class="pa-0" Color="@(_selectedSettings.Type == eventSetting.Type || Active ? ActiveColor : DefaultColor)" Icon="@eventSetting.Icon" OnClick="@(() => SelectSetting(eventSetting))" Size="Size.Small" Title="@eventSetting.Label"></MudIconButton>
+                }
+            </MudButtonGroup>
+        </MudMenu>
+        break;
+    case MudEditorValueType.Toggle:
+        <MudButtonGroup Variant="Variant.Outlined">
+            <MudIconButton Class="pa-0" Color="@(Active ? ActiveColor : DefaultColor)" Icon="@_selectedSettings.Icon" OnClick="@(ToggleValue)" Size="Size.Small" Title="@_selectedSettings.Label"></MudIconButton>
+        </MudButtonGroup>
+        break;
+}
+@code {
+    [Parameter, EditorRequired]
+    public MudEditorEventSettings Settings { get; set; } = null!;
+
+    [Parameter]
+    public Color ActiveColor { get; set; } = Color.Primary;
+
+    [Parameter]
+    public Color DefaultColor { get; set; } = Color.Default;
+
+    [Parameter]
+    public bool Active { get; set; }
+
+    private MudEditorEventSettings _selectedSettings = null!;
+
+    protected override void OnParametersSet() => _selectedSettings =  Settings.Events!.First();
+
+    private void SelectSetting(MudEditorEventSettings setting) => _selectedSettings = setting;
+
+    private void ToggleValue() => _selectedSettings = Settings.Events!.SkipWhile(x => x.EventType != _selectedSettings.EventType).Skip(1).DefaultIfEmpty(  Settings.Events!.First() ).FirstOrDefault()!;
+}

@@ -1,0 +1,72 @@
+﻿.mud-editor ::deep {
+    @import 'quill-css';
+
+    .mud-editor-toolbar {
+        .mud-input-control {
+            margin-top: 0;
+            max-width: 130px;
+        }
+
+        .mud-input {
+            &.mud-input-outlined.mud-input-adorned-end {
+                padding-right: 5px;
+                padding-inline-end: 5px;
+            }
+
+            > input.mud-input-root-outlined {
+                padding: 3.5px;
+            }
+        }
+
+
+        .mud-menu  {
+            .mud-button-root {
+                padding: 0;
+
+
+            }
+        }
+        /*        .mud-button-group-outlined.mud-button-group-override-styles .mud-button-root {
+            border: 1px solid var(--mud-palette-lines-inputs);
+        }*/
+
+        .mud-editor-alignment {
+            div.mud-input-slot.mud-input-root-outlined {
+                padding: 3.5px;
+            }
+
+            .mud-input-adornment-end {
+                display: none;
+            }
+        }
+
+        .mud-editor-picker {
+            .mud-picker * {
+                display: none;
+            }
+        }
+    }
+
+    .mud-editor-container {
+        min-height: 42px;
+
+        .ql-editor {
+            flex-grow: 1;
+            overflow: visible;
+        }
+    }
+}
+
+.mud-editor-alignment-popover {
+    .mud-list {
+        padding: 0;
+
+        .mud-list-item {
+            padding: 0 2.5px;
+
+            .mud-list-item-text {
+                margin: 0;
+            }
+        }
+    }
+}
