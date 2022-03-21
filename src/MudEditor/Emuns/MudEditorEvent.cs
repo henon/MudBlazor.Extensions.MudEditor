@@ -2,6 +2,7 @@
 
 public enum MudEditorEvent
 {
+    Full,
     FontList,
     SizeList,
     StyleGroup,
@@ -46,6 +47,5 @@ public enum MudEditorEvent
     Formula,
     Subscript,
     Superscript,
-    FormatClear,
-    All
+    FormatClear
 }

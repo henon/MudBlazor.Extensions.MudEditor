@@ -5,7 +5,7 @@ using static MudBlazor.Extensions.Enums.MudEditorEvent;
 using static MudBlazor.Extensions.Enums.MudEditorValueType;
 
 
-namespace MudBlazor.Extensions.Utilities;
+namespace MudBlazor.Extensions.Settings;
 
 public record MudEditorEventSettings
 {
@@ -29,7 +29,7 @@ public record MudEditorEventSettings
     public ReadOnlyCollection<MudEditorEventSettings>? Events { get; init; }
 }
 
-public static class MudEditorEventHelper
+internal static class MudEditorEventHelper
 {
     public static MudEditorEventSettings Settings(this MudEditorEvent editorEvent)
     {
@@ -126,6 +126,13 @@ public static class MudEditorEventHelper
                 return new(Superscript, Value, "Superscript", Icons.Filled.Superscript);
             case FormatClear:
                 return new(FormatClear, Value, "Clear Format", Icons.Filled.FormatClear);
+            case Full:
+                return new(Full, Group,
+                    events: new[]
+                    {
+                        FontList, SizeList, StyleGroup, ColorGroup, HeadingMenu, Quote, Code, ListGroup, IndentGroup,
+                        AlignmentMenu, DirectionToggle, MediaGroup, MathGroup, FormatClear
+                    });
             default:
                 throw new ArgumentOutOfRangeException(nameof(editorEvent), editorEvent, null);
         }

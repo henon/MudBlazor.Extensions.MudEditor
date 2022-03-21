@@ -27,5 +27,6 @@
 
 	<ItemGroup>
 	  <Folder Include="CustomIcons\" />
+	  <Folder Include="wwwroot\" />
 	</ItemGroup>
 </Project>
