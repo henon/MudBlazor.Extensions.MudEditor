@@ -4,9 +4,8 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # User-specific files and folders
-**.js
-**.razor.js
-**.css
-**.razor.css
+*.js
+*.js.map
+*.css
 wwwroot/
 
