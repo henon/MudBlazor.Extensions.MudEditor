@@ -1,0 +1,16 @@
+﻿@inherits ToolBarExpanded
+@namespace MudBlazor.Extensions.ToolBarComponents
+
+<MudMenu Dense="true" Icon="@_selectedOption.Icon" Color="@(Active ? ActiveColor : DefaultColor)" ListClass="py-0" PopoverClass="pa-0" Variant="Variant.Outlined">
+    <MudButtonGroup Variant="Variant.Outlined" VerticalAlign="true">
+        @foreach (var option in Options.Options!)
+        {
+            <MudIconButton Class="pa-0" Color="@(_selectedOption.Equals(option) || Active ? ActiveColor : DefaultColor)" Icon="@option.Icon" OnClick="@(() => SelectSetting(option))" Size="Size.Small" Title="@option.Label"></MudIconButton>
+        }
+    </MudButtonGroup>
+</MudMenu>
+
+@code {
+
+
+}

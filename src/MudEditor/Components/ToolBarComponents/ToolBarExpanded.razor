@@ -1,0 +1,17 @@
+﻿@inherits ToolBarBase<string>
+@namespace MudBlazor.Extensions.ToolBarComponents
+
+<MudButtonGroup Variant="Variant.Outlined">
+    @foreach (var option in Options.Options!)
+    {
+        <MudIconButton Class="pa-0" Color="@(_selectedOption.Equals(option) || Active ? ActiveColor : DefaultColor)" Icon="@option.Icon" OnClick="@(() => SelectSetting(option))" Size="Size.Small" Title="@option.Label"></MudIconButton>
+    }
+</MudButtonGroup>
+
+@code {
+    internal ToolBarOption _selectedOption = null!;
+
+    protected override void OnParametersSet() => _selectedOption =  Options.Options!.First();
+
+    internal void SelectSetting(ToolBarOption option) => _selectedOption = option;
+}

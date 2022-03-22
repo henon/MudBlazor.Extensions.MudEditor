@@ -1,17 +1,19 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using MudBlazor.Utilities;
+using static MudBlazor.Extensions.ToolBarOption;
 
 namespace MudBlazor.Extensions;
 
 public partial class MudEditor : MudComponentBase, IAsyncDisposable
 {
-    // private static IJSObjectReference? _module;
     private DotNetObjectReference<MudEditor>? _dotNetObjectReference;
 
     private IJSObjectReference? _quillEditor;
 
     private ElementReference _quillElement;
+
+    private ToolBarOption _toolBarOption = null!;
 
     private string Classname => new CssBuilder("mud-editor").AddClass(Class).Build();
 
@@ -19,7 +21,7 @@ public partial class MudEditor : MudComponentBase, IAsyncDisposable
     private IJSRuntime? JsRuntime { get; set; }
 
     [Parameter]
-    public MudEditorToolbarConfig? ToolbarConfig { get; set; } = MudEditorToolbarConfig.FullToolBar();
+    public ToolBarGroup[]? ToolBarOptions { get; set; }
 
     [Parameter]
     public List<string>? Fonts { get; set; }
@@ -80,6 +82,11 @@ public partial class MudEditor : MudComponentBase, IAsyncDisposable
                 _dotNetObjectReference,
                 _quillElement,
                 Placeholder);
+    }
+
+    protected override void OnParametersSet()
+    {
+        _toolBarOption = ToolBarOptions == null ? Full : CustomToolBarOption(ToolBarOptions);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
