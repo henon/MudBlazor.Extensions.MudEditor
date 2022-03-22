@@ -1,0 +1,16 @@
+﻿@namespace MudBlazor.Extensions
+@inherits MudComponentBase
+
+<div class="@Classname">
+    <MudPaper Elevation="@Elevation" Height="@Height" MaxHeight="@MaxHeight" MaxWidth="@MaxWidth" MinHeight="@MinHeight" MinWidth="@MinWidth" Outlined="@Outlined" Square="@Square" Style="@Style" Tag="@Tag" UserAttributes="@UserAttributes" Width="@Width">
+        <MudPaper Class="mud-editor-toolbar d-flex justify-start flex-grow-1 flex-wrap gap-2 px-1 py-1">
+            @foreach (var option in _toolBarOption.Options!) {
+                <DynamicComponent Type="@option.Type.ComponentType" Parameters="@option.Parameters" />  
+            }
+        </MudPaper>
+
+        <div id="@EditorContainerId" @ref="@_quillElement" class="overflow-y-scroll d-flex mud-editor-container">
+            @EditorContent
+        </div>
+    </MudPaper>
+</div>

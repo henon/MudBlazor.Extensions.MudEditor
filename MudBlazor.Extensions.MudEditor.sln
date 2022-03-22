@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MudEditor", "src\MudEditor\MudEditor.csproj", "{DC031BAF-3B44-48F6-AC08-58B2EC208274}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerSideViewer", "src\ServerSideViewer\ServerSideViewer.csproj", "{E10DA330-5FB5-42C3-8F5F-E9EC529443FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC031BAF-3B44-48F6-AC08-58B2EC208274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC031BAF-3B44-48F6-AC08-58B2EC208274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC031BAF-3B44-48F6-AC08-58B2EC208274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC031BAF-3B44-48F6-AC08-58B2EC208274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E10DA330-5FB5-42C3-8F5F-E9EC529443FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E10DA330-5FB5-42C3-8F5F-E9EC529443FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E10DA330-5FB5-42C3-8F5F-E9EC529443FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E10DA330-5FB5-42C3-8F5F-E9EC529443FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {858CDE39-A794-4879-ACB5-915A3E878F02}
+	EndGlobalSection
+EndGlobal

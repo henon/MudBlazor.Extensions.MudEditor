@@ -1,0 +1,14 @@
+﻿@inherits ToolBarBase<string>
+@namespace MudBlazor.Extensions.ToolBarComponents
+
+<MudButtonGroup Variant="Variant.Outlined">
+    <MudIconButton Class="pa-0" Color="@(Active ? ActiveColor : DefaultColor)" Icon="@_selectedOptions.Icon" OnClick="@(ToggleValue)" Size="Size.Small" Title="@_selectedOptions.Label"></MudIconButton>
+</MudButtonGroup>
+
+@code {
+    private ToolBarOption _selectedOptions = null!;
+
+    protected override void OnParametersSet() => _selectedOptions =  Options.Options!.First();
+
+    private void ToggleValue() => _selectedOptions = Options.Options!.SkipWhile(option => !option.Equals(_selectedOptions)).Skip(1).DefaultIfEmpty(  Options.Options!.First() ).FirstOrDefault()!;
+}

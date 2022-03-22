@@ -1,0 +1,17 @@
+﻿@inherits ToolBarBase<string>
+@namespace MudBlazor.Extensions.ToolBarComponents
+
+<div class="flex-grow-0">
+    <MudSelect T="string" Value="@("normal")" Dense="true" Variant="Variant.Outlined">
+        @foreach (var item in Items) {
+            <MudSelectItem Value="@item"/>
+        }
+    </MudSelect>
+</div>
+
+@code {
+
+    [Parameter]
+    public List<string> Items { get; set; } = new();
+
+}

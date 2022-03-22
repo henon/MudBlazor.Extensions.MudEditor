@@ -1,0 +1,17 @@
+﻿@inherits ToolBarBase<string>
+@namespace MudBlazor.Extensions.ToolBarComponents
+
+<MudButtonGroup Variant="Variant.Outlined">
+    @foreach (var option in Options.Options!)
+    {
+        if (option.Type.Equals(ToolBarGroupType.Btn)) {
+            <MudIconButton Class="pa-0" Color="@(Active ? ActiveColor : DefaultColor)" Icon="@option.Icon" Size="Size.Small" Title="@option.Label"></MudIconButton>
+        } else {
+            <DynamicComponent Type="@option.Type.ComponentType" Parameters="@option.Parameters" />  
+        }
+    }
+</MudButtonGroup>
+
+@code {
+
+}

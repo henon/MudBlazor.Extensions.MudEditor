@@ -1,0 +1,26 @@
+﻿@inherits ToolBarBase<string>
+@namespace MudBlazor.Extensions.ToolBarComponents
+<div class="mud-editor-picker d-flex">
+	<MudColorPicker @ref="_picker" @bind-Text="Value"/>
+	<MudIconButton Class="pa-0" Icon="@Options.Icon" Size="Size.Small" OnClick="@Open" Style="@_fontStyle" Title="@Options.Label"></MudIconButton>
+</div>
+
+@code {
+
+    [Parameter]
+	public override string? Value
+	{
+		get => _value;
+		set
+		{
+			_value = value;
+			_fontStyle = $"color:{Value}";
+		}
+	}
+
+	private string? _value;
+    private MudColorPicker? _picker;
+	private string? _fontStyle;
+
+    private void Open() => _picker!.Open();
+}
